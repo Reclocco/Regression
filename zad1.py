@@ -4,11 +4,11 @@ import matplotlib.pyplot as plt
 
 def calc_err(x, param, ideal):
     errors = []
-    for i in range(215):
-        summed = 0
-        for j in range(len(param)):
-            summed += x[i][j] * param[j]
-        errors.append(ideal[i][0] - summed)
+    for i_ter in range(215):
+        my_sum = 0
+        for j_ter in range(len(param)):
+            my_sum += x[i_ter][j_ter] * param[j_ter]
+        errors.append(ideal[i_ter][0] - my_sum)
     return errors
 
 
@@ -44,17 +44,17 @@ parameters3 = np.linalg.lstsq(X_10000, y, rcond=None)[0]
 # print(calc_err(X_10000, parameters3, y))
 
 # WYPISANIE WYKRESÓW
-# plt.plot(calc_err(X_10, parameters1, y))
-# plt.ylabel('error')
-# plt.show()
-#
-# plt.plot(calc_err(X_1000, parameters2, y), )
-# plt.ylabel('error')
-# plt.show()
-#
-# plt.plot(calc_err(X_10000, parameters3, y))
-# plt.ylabel('error')
-# plt.show()
+plt.plot(calc_err(X_10, parameters1, y))
+plt.ylabel('error')
+plt.show()
+
+plt.plot(calc_err(X_1000, parameters2, y), )
+plt.ylabel('error')
+plt.show()
+
+plt.plot(calc_err(X_10000, parameters3, y))
+plt.ylabel('error')
+plt.show()
 
 training1 = X_10000[:200, :10]
 training2 = X_10000[:200, :100]
